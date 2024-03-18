@@ -1,0 +1,24 @@
+.btn{
+    background-color: white;
+}
+
+.navbar{
+    background-color: #00151e;
+}
+
+.navbar-brand{
+    font-size: 2rem;
+}
+
+.logo{
+    width: 60%;
+}
+
+.navbar-toggler{
+    border: none;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none;
+    border: none;
+}
