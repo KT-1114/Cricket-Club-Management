@@ -1,24 +1,51 @@
-.btn{
-    background-color: white;
+.btn {
+  background-color: white;
 }
 
-.navbar{
-    background-color: #00151e;
+.navbar {
+  background-color: #00151e;
 }
 
-.navbar-brand{
-    font-size: 2rem;
+.navbar-brand {
+  font-size: 2rem;
 }
 
-.logo{
-    width: 60%;
+.logo {
+  width: 60%;
 }
 
-.navbar-toggler{
-    border: none;
+.navbar {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-.navbar-toggler:focus{
-    box-shadow: none;
-    border: none;
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.navbar-nav .nav-item a{
+    font-size: 1.1rem;
+    font-weight: 200;
+}
+
+.navbar-nav .nav-item a::after {
+  content: "";
+  height: 2px;
+  width: 0%;
+  background-color: white;
+  display: block;
+  transform: scaleX(0);
+  transition: 0.3s ease;
+  transform-origin: left;
+}
+
+.navbar-nav .nav-item a:hover::after {
+  width: 100%;
+  transform: scaleX(1);
 }
