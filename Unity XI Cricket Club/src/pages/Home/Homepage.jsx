@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import "../Home/Homepage.css";
+import CardList from "../../components/Card/card";
 
 const Homepage = () => {
   return (
@@ -8,7 +9,7 @@ const Homepage = () => {
       <Header />
       <section>
         <div class="container-fluid main px-4 px-lg-5 animate__animated animate__fadeInLeft">
-          <div class="row gx-4 gx-lg-5">
+          <div class="row gx-4 gx-lg-5 d-flex align-items-center">
             <div class="col-lg-7">
               <h1 class="mt-5 text-white">Unity XI Cricket Club</h1>
               <p className="text-white">
@@ -40,6 +41,8 @@ const Homepage = () => {
                 impact on the world of cricket and beyond.
               </p>
             </div>
+            <div className="mt-5 col-lg-5 images d-lg-block d-none">
+            </div>
           </div>
         </div>
       </section>
@@ -47,6 +50,7 @@ const Homepage = () => {
       <section>
         <div class="container-fluid achieve px-4 px-lg-5 animate__animated">
           <div class="row gx-4 gx-lg-5">
+            <div className="col-lg-5"></div>
             <div class="col-lg-7">
               <h1 class="mt-5 text-dark">Recent Achievement</h1>
               <p className="text-dark">
@@ -56,6 +60,7 @@ const Homepage = () => {
                 thrilling matches, camaraderie, and the joy of playing the
                 beloved sport of cricket.
               </p>
+              <CardList />
             </div>
           </div>
         </div>

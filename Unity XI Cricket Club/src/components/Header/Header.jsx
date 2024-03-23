@@ -31,11 +31,11 @@ const Header = () => {
                   Achievements
                 </a>
               </li>
-              <li class="nav-item">
+              {/* <li class="nav-item">
                 <a class="nav-link" href="#">
                   Statistics
                 </a>
-              </li>
+              </li> */}
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   Players
@@ -82,11 +82,11 @@ const Header = () => {
                   Achievements
                 </a>
               </li>
-              <li class="nav-item">
+              {/* <li class="nav-item">
                 <a class="nav-link" href="#">
                   Statistics
                 </a>
-              </li>
+              </li> */}
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   Players
