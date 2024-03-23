@@ -6,12 +6,12 @@ import CardList from "../../components/Card/card";
 const Homepage = () => {
   return (
     <div>
-      <Header />
+      <Header curr={"Home"} />
       <section>
         <div class="container-fluid main px-4 px-lg-5 animate__animated animate__fadeInLeft">
           <div class="row gx-4 gx-lg-5 d-flex align-items-center">
             <div class="col-lg-7">
-              <h1 class="mt-5 text-white">Unity XI Cricket Club</h1>
+              <h1 class="text-white">Unity XI Cricket Club</h1>
               <p className="text-white">
                 Established in 2015, Unity XI Cricket Club has emerged as a
                 vibrant hub for cricket enthusiasts in the local community.
@@ -41,18 +41,24 @@ const Homepage = () => {
                 impact on the world of cricket and beyond.
               </p>
             </div>
-            <div className="mt-5 col-lg-5 images d-lg-block d-none">
-            </div>
+            <div className="col-lg-5 images d-lg-block d-none"></div>
           </div>
         </div>
       </section>
 
       <section>
         <div class="container-fluid achieve px-4 px-lg-5 animate__animated">
-          <div class="row gx-4 gx-lg-5">
-            <div className="col-lg-5"></div>
+          <div class="row gx-4 gx-lg-5 d-flex align-items-center">
+            <div className="victory col-lg-5">
+              <img src="https://img.freepik.com/free-vector/cricket-championship-with-ball-wicket-cricket-stadium-freehand-sketch-graphic-design-vector-illustration_460848-11672.jpg?t=st=1711189528~exp=1711193128~hmac=44f7a1693b2b9caf33e95a11dabbe03431e9070b3a1ac10ffb59ca5ced26e898&w=900" alt=""/>
+            </div>
             <div class="col-lg-7">
-              <h1 class="mt-5 text-dark">Recent Achievement</h1>
+              <div className="d-flex justify-content-between align-items-center">
+                <h1 class="mt-5 text-dark">Recent Achievements</h1>
+                <a href="/achievements" className="mt-5 explore">
+                  Explore
+                </a>
+              </div>
               <p className="text-dark">
                 Uniting Passion, Excellence, and Community. Our club is
                 dedicated to fostering a love for cricket while promoting

@@ -11,7 +11,7 @@ const CardList = () => {
       try {
         const { data, error } = await supabase
           .from("achievements")
-          .select("image_url, description, title").order("title") ;
+          .select("image_url, description, title").order("title").limit(3) ;
 
         console.log(data)
         if (error) {

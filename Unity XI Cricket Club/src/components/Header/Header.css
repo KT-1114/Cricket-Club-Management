@@ -4,14 +4,23 @@
 
 .navbar {
   background-color: #00151e;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 1%;
+  border-radius: 50px;
 }
 
 .navbar-brand {
   font-size: 2rem;
 }
 
+.logoImage{
+  overflow: hidden;
+  border-radius: 500px;
+}
+
 .logo {
-  width: 60%;
+  width: 50%;
 }
 
 .navbar {
@@ -45,7 +54,26 @@
   transform-origin: left;
 }
 
+.active::after{
+  content: "";
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  display: block;
+}
+
 .navbar-nav .nav-item a:hover::after {
   width: 100%;
   transform: scaleX(1);
+}
+
+@media screen and (max-width: 770px) {
+  .logo {
+    width: 40%;
+  }
+  .navbar {
+    background-color: #00151e;
+   margin: 1%;
+    border-radius: 50px;
+  }
 }

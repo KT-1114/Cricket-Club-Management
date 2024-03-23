@@ -2,12 +2,14 @@ import React from "react";
 import "../Header/Header.css"
 import logo from "../../assets/logo.png"
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-bottom d-sm-block d-none">
         <div class="container">
+          <div className="logoImage">
           <a href="/" className="navbar-brand animate__animated animate__fadeIn"><img src={logo} className="logo"/></a>
+          </div>
           <button
             class="navbar-toggler"
             type="button"
@@ -22,12 +24,12 @@ const Header = () => {
           <div class="collapse navbar-collapse animate__animated animate__fadeInRight" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/">
+                <a className={props.curr === "Home" ? "nav-link active" : "nav-link"}  aria-current="page" href="/">
                   Home
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class={props.curr === "Achievements" ? "nav-link active" : "nav-link"} href="/achievements">
                   Achievements
                 </a>
               </li>
@@ -78,7 +80,7 @@ const Header = () => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/achievements">
                   Achievements
                 </a>
               </li>
