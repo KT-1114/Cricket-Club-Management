@@ -7,7 +7,10 @@
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 1%;
-  border-radius: 50px;
+  border-radius: 20px;
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 .navbar-brand {
@@ -21,12 +24,6 @@
 
 .logo {
   width: 50%;
-}
-
-.navbar {
-  font-family: "Maven Pro", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
 
 .navbar-toggler {
@@ -73,7 +70,7 @@
   }
   .navbar {
     background-color: #00151e;
-   margin: 1%;
-    border-radius: 50px;
+    margin: 1%;
+    border-radius: 20px;
   }
 }

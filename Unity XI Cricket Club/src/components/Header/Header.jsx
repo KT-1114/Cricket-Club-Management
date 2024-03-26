@@ -29,7 +29,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class={props.curr === "Achievements" ? "nav-link active" : "nav-link"} href="/achievements">
+                <a class={props.curr === "Achievements" ? "nav-link active" : "nav-link"} href="">
                   Achievements
                 </a>
               </li>
@@ -49,7 +49,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="" aria-disabled="true">
+                <a  class={props.curr === "Login" ? "nav-link active" : "nav-link"} href="/login" aria-disabled="true">
                   Login
                 </a>
               </li>
@@ -80,7 +80,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/achievements">
+                <a class="nav-link" href="">
                   Achievements
                 </a>
               </li>
@@ -100,7 +100,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="" aria-disabled="true">
+                <a class="nav-link" href="/login" aria-disabled="true">
                   Login
                 </a>
               </li>

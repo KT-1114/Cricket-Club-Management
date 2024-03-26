@@ -1,0 +1,28 @@
+.btn-color {
+  background-color: #00151e;
+  color: #fff;
+}
+
+.btn-color:hover{
+    background-color: #00151ebc;
+    color: white;
+}
+
+.login input:focus{ 
+    box-shadow: none;
+}
+
+.profile-image-pic {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.cardbody-color {
+  background-color: #ebf2fa;
+}
+
+a {
+  text-decoration: none;
+}
+
