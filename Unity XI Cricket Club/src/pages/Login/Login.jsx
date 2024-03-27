@@ -28,6 +28,7 @@ const Login = () => {
       }
 
       if (data.password !== password) {
+        alert("Please check your credentials");
         throw new Error("Incorrect password");
       }
 

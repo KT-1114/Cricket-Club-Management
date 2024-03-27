@@ -10,6 +10,7 @@ const Homepage = () => {
       <section>
         <div class="container-fluid main px-4 px-lg-5 animate__animated animate__fadeInLeft">
           <div class="row gx-4 gx-lg-5 d-flex align-items-center">
+            <div className="col-lg-5 images d-lg-block d-none"></div>
             <div class="col-lg-7">
               <h1 class="text-white">Unity XI Cricket Club</h1>
               <p className="text-white">
@@ -41,7 +42,6 @@ const Homepage = () => {
                 impact on the world of cricket and beyond.
               </p>
             </div>
-            <div className="col-lg-5 images d-lg-block d-none"></div>
           </div>
         </div>
       </section>

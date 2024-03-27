@@ -10,8 +10,8 @@ const Achievement = () => {
       try {
         const { data, error } = await supabase
           .from("achievements")
-          .select("image_url, description, title")
-          .order("year");
+          .select("image_url, description, title, year")
+          .order("year", {ascending:false});
 
         console.log(data);
         if (error) {
@@ -34,8 +34,8 @@ const Achievement = () => {
         <h1 className="text-center mt-4">Achievements</h1>
       </section>
       <section class="pb-5 pt-2 trophies">
-        <div class="container px-4 px-lg-5 mt-5">
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
+        <div class="container px-4 px-lg-5 pb-5 mt-5">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
             {cards.map((card, index) => (
               <div class="col mb-4" key={index}>
                 <div class="card h-100">
