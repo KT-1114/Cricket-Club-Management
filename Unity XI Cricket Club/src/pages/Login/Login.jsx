@@ -31,7 +31,7 @@ const Login = () => {
         throw new Error("Incorrect password");
       }
 
-      navigate('/adminplayer/'+ data.player_id);
+      navigate('/dashboard/'+ data.player_id);
       alert("Redirecting to the player admin dashboard...!");
 
     } catch (error) {

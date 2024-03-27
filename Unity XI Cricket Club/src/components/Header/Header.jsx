@@ -29,7 +29,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class={props.curr === "Achievements" ? "nav-link active" : "nav-link"} href="">
+                <a class={props.curr === "Achievements" ? "nav-link active" : "nav-link"} href="/achievements">
                   Achievements
                 </a>
               </li>
@@ -80,15 +80,10 @@ const Header = (props) => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="/achievements">
                   Achievements
                 </a>
               </li>
-              {/* <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Statistics
-                </a>
-              </li> */}
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   Players

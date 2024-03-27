@@ -60,19 +60,19 @@ const AdminPlayer = () => {
 
   return (
     <div>
-      <div>
+      {/* <div>
         <h2>Player Information</h2>
         <button onClick={handleLogout}>Logout</button>
         {playerData ? (
           <div>
             <p>Name: {playerData.player_name}</p>
             <p>Age: {playerData.age}</p>
-            {/* Add more player data fields as needed */}
+            
           </div>
         ) : (
           <p>Loading player data...</p>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
