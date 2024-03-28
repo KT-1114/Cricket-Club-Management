@@ -1,18 +1,28 @@
-.trophies{
-    font-family: "Maven Pro", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+.trophies {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-.trophies h1{
-    color: white;
-    font-size: 4rem;
+.trophies h1 {
+  color: white;
+  font-size: 4rem;
 }
 
+.loading-container {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 @media screen and (max-width: 770px) {
-    .trophies h1{
-        color: white;
-        font-size: 2rem;
-    }
+  .trophies h1 {
+    color: white;
+    font-size: 2rem;
+  }
 }

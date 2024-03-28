@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import Header from "../../components/Header/Header";
 import { useNavigate } from "react-router-dom";
 import supabase from "../../connection";
+import Footer from "../../components/Footer/Footer";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -42,6 +43,7 @@ const Login = () => {
 
   return (
     <div>
+    <div className="pt-5 mt-5 mb-5">
       <Header curr={"Login"} />
       <div class="container-fluid login mt-5">
         <div class="row">
@@ -106,6 +108,8 @@ const Login = () => {
         </div>
       </div>
     </div>
+      <Footer/>
+      </div>
   );
 };
 

@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png"
 const Header = (props) => {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-bottom d-sm-block d-none">
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
           <div className="logoImage">
           <a href="/" className="navbar-brand animate__animated animate__fadeIn"><img src={logo} className="logo"/></a>
@@ -58,7 +58,7 @@ const Header = (props) => {
         </div>
       </nav>
 
-      <nav class="navbar navbar-expand-lg navbar-dark d-block d-sm-none">
+      {/* <nav class="navbar navbar-expand-lg navbar-dark d-block d-sm-none">
         <div class="container">
           <a href="/" className="navbar-brand animate__animated animate__fadeIn"><img src={logo} className="logo"/></a>
           <button
@@ -102,7 +102,7 @@ const Header = (props) => {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> */}
     </div>
   );
 };

@@ -1,0 +1,11 @@
+.footer{
+    background-color: #00151e;
+    color: white;
+    font-family: "Maven Pro", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.footer ul li a{
+    color: whitesmoke;
+}

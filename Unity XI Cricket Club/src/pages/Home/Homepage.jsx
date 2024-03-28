@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import "../Home/Homepage.css";
 import CardList from "../../components/Card/card";
+import Footer from "../../components/Footer/Footer";
 
 const Homepage = () => {
   return (
-    <div>
+    <div className="">
       <Header curr={"Home"} />
-      <section>
+      <section className="mt-5 pt-5">
         <div class="container-fluid main px-4 px-lg-5 animate__animated animate__fadeInLeft">
           <div class="row gx-4 gx-lg-5 d-flex align-items-center">
             <div className="col-lg-5 images d-lg-block d-none"></div>
@@ -71,6 +72,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };
