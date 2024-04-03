@@ -9,21 +9,6 @@ const AdminPlayer = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkAuthentication = async () => {
-      if (!loggedIn) {
-        navigate("/login");
-      }
-    };
-
-    checkAuthentication();
-
-    // Cleanup function to prevent memory leaks
-    return () => {
-      // Perform cleanup actions here if needed
-    };
-  }, [loggedIn, history]);
-
-  useEffect(() => {
     const fetchPlayerData = async () => {
       try {
         const { data, error } = await supabase
@@ -60,7 +45,7 @@ const AdminPlayer = () => {
 
   return (
     <div>
-      {/* <div>
+      <div>
         <h2>Player Information</h2>
         <button onClick={handleLogout}>Logout</button>
         {playerData ? (
@@ -72,7 +57,7 @@ const AdminPlayer = () => {
         ) : (
           <p>Loading player data...</p>
         )}
-      </div> */}
+      </div>
     </div>
   );
 };
