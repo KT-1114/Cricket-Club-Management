@@ -42,7 +42,7 @@
 
 .navbar-nav .nav-item a::after {
   content: "";
-  height: 2px;
+  height:2px;
   width: 0%;
   background-color: white;
   display: block;

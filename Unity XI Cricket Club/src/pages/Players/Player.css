@@ -1,3 +1,14 @@
-.player:hover{
-    transform: scale(10%);
+.player:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-link {
+  text-decoration: none; /* Remove default underline */
+  color: inherit; /* Inherit text color from parent */
+}
+
+.card-link:hover {
+  text-decoration: none; /* Remove underline on hover */
+  color: inherit; /* Inherit text color on hover */
 }

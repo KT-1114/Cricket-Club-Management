@@ -5,6 +5,7 @@ import Achievement from './pages/Achievement/Achievement'
 import Login from './pages/Login/Login'
 import AdminPlayer from './pages/AdminPlayer/AdminPlayer'
 import Player from './pages/Players/Player'
+import PlayerDetails from './pages/PlayerDetail/PlayerDetails'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path='/login' element={<Login/>}/>
           <Route path='/players' element={<Player/>}/>
           <Route path='/adminplayer/:playerId' element={<AdminPlayer/>}/>
+          <Route path='/player/:playerId' element={<PlayerDetails/>}/>
         </Routes>
       </BrowserRouter>
     </div>
