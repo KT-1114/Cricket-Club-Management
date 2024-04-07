@@ -13,7 +13,7 @@ const Achievement = () => {
       try {
         const { data, error } = await supabase
           .from("achievements")
-          .select("image_url, description, title, year")
+          .select("image_url, description, title, year, id")
           .order("year", { ascending: false });
 
         console.log(data);
@@ -49,18 +49,20 @@ const Achievement = () => {
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
                   {cards.map((card, index) => (
                     <div class="col mb-4" key={index}>
-                      <div class="card h-100">
-                        <img
-                          class="card-img-top"
-                          src={card.image_url}
-                          alt="..."
-                        />
-                        <div class="card-body p-4">
-                          <div class="text-center">
-                            <h5 class="fw-bolder">{card.title}</h5>
+                      <a href={"/achievement/" + card.id}>
+                        <div class="card h-100">
+                          <img
+                            class="card-img-top"
+                            src={card.image_url}
+                            alt="..."
+                          />
+                          <div class="card-body p-4">
+                            <div class="text-center">
+                              <h5 class="fw-bolder">{card.title}</h5>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     </div>
                   ))}
                 </div>

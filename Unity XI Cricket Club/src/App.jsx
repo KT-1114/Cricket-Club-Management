@@ -5,7 +5,10 @@ import Achievement from './pages/Achievement/Achievement'
 import Login from './pages/Login/Login'
 import AdminPlayer from './pages/AdminPlayer/AdminPlayer'
 import Player from './pages/Players/Player'
-import PlayerDetails from './pages/PlayerDetail/PlayerDetails'
+import AllRounder from './pages/Details/AllRounder'
+import Batsman from './pages/Details/Batsman'
+import Bowler from './pages/Details/Bowler'
+import Trophies from './pages/Details/Trophies'
 
 const App = () => {
   return (
@@ -17,7 +20,10 @@ const App = () => {
           <Route path='/login' element={<Login/>}/>
           <Route path='/players' element={<Player/>}/>
           <Route path='/adminplayer/:playerId' element={<AdminPlayer/>}/>
-          <Route path='/player/:playerId' element={<PlayerDetails/>}/>
+          <Route path='/allrounder/:playerId' element={<AllRounder/>}/>
+          <Route path='/batsman/:playerId' element={<Batsman/>}/>
+          <Route path='/bowler/:playerId' element={<Bowler/>}/>
+          <Route path='/achievement/:Id' element={<Trophies/>}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -8,3 +8,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+.allrounder{
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

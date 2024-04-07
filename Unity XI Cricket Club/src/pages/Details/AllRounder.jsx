@@ -3,15 +3,15 @@ import { useParams } from "react-router-dom";
 import supabase from "../../connection";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import "../Details/AllRounder.css"
 
-const PlayerDetails = () => {
+const AllRounder = () => {
   const [playerData, setPlayerData] = useState(null);
   const { playerId } = useParams();
 
   useEffect(() => {
     const fetchPlayerData = async () => {
       try {
-        // Fetch player data from the 'players' table
         const { data: playerData, error: playerError } = await supabase
           .from("players")
           .select("*")
@@ -22,7 +22,6 @@ const PlayerDetails = () => {
           throw playerError;
         }
 
-        // Fetch batsmen data from the 'batsmen' table
         const { data: all_rounderData, error: all_rounderError } = await supabase
           .from("all_rounders")
           .select("*")
@@ -33,7 +32,6 @@ const PlayerDetails = () => {
           throw all_rounderError;
         }
 
-        // Merge playerData and all_rounderData to create combined playerData
         const combinedPlayerData = { ...playerData, ...all_rounderData };
 
         setPlayerData(combinedPlayerData);
@@ -47,10 +45,10 @@ const PlayerDetails = () => {
   return (
     <div>
       {playerData ? (
-        <div className="">
+        <div className="allrounder">
           <Header />
           <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
+            <div class="container px-4 px-lg-5 py-4 my-5 bg-white">
               <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-md-6">
                   <img
@@ -60,7 +58,7 @@ const PlayerDetails = () => {
                   />
                 </div>
                 <div class="col-md-6">
-                  <div class="small mb-1">{playerData.speciality}</div>
+                  <div class="small mb-1">All Rounder</div>
                   <h1 class="display-5 fw-bolder">{playerData.player_name}</h1>
                   <div class="fs-5 mb-5">
                     {/* <span class="text-decoration-line-through">$45.00</span> */}
@@ -76,9 +74,19 @@ const PlayerDetails = () => {
                     <br />
                     <span>Fifties - {playerData.fifties}</span>
                     <br />
-                    {/* <span>Run Scored - {playerData.run_scored}</span><br/>
-                  <span>Run Scored - {playerData.run_scored}</span><br/>
-                  <span>Run Scored - {playerData.run_scored}</span> */}
+                    <br />
+                    <span>T20 Wickets - {playerData.t20_wickets}</span>
+                    <br />
+                    <span>ODI Wickets - {playerData.odi_wickets}</span>
+                    <br />
+                    <span>Test Wickets - {playerData.test_wickets}</span>
+                    <br />
+                    <span>Economy - {playerData.economy}</span>
+                    <br />
+                    <span>Average - {playerData.average}</span>
+                    <br />
+                    <span>Overs - {playerData.overs_thrown}</span>
+                    <br />
                   </div>
                 </div>
               </div>
@@ -107,4 +115,4 @@ const PlayerDetails = () => {
   );
 };
 
-export default PlayerDetails;
+export default AllRounder;

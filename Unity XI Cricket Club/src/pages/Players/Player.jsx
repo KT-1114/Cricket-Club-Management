@@ -53,7 +53,7 @@ const Player = () => {
                     .filter((card) => card.speciality === "all_rounder")
                     .map((card, index) => (
                       <div className="col mb-4" key={index}>
-                        <a href={"/player/" + card.player_id}>
+                        <a href={"/allrounder/" + card.player_id}>
                         <div className="player card h-100">
                           <img
                             className="card-img-top"
@@ -79,6 +79,7 @@ const Player = () => {
                     .filter((card) => card.speciality === "batsman")
                     .map((card, index) => (
                       <div className="col mb-4" key={index}>
+                        <a href={"/batsman/" + card.player_id}>
                         <div className="player card h-100">
                           <img
                             className="card-img-top"
@@ -91,6 +92,7 @@ const Player = () => {
                             </div>
                           </div>
                         </div>
+                        </a>
                       </div>
                     ))}
                 </div>
@@ -103,6 +105,7 @@ const Player = () => {
                     .filter((card) => card.speciality === "bowler")
                     .map((card, index) => (
                       <div className="col mb-4" key={index}>
+                        <a href={"/bowler/" + card.player_id}>
                         <div className="player card h-100">
                           <img
                             className="card-img-top"
@@ -115,6 +118,7 @@ const Player = () => {
                             </div>
                           </div>
                         </div>
+                        </a>
                       </div>
                     ))}
                 </div>
