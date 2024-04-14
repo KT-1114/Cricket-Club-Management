@@ -44,7 +44,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class={props.curr === "Club" ? "nav-link active" : "nav-link"} href="/club">
                   Club
                 </a>
               </li>

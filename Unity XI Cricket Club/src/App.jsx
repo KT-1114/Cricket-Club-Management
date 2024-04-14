@@ -9,6 +9,7 @@ import AllRounder from './pages/Details/AllRounder'
 import Batsman from './pages/Details/Batsman'
 import Bowler from './pages/Details/Bowler'
 import Trophies from './pages/Details/Trophies'
+import Club from './pages/Club/Club'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path='/achievements' element={<Achievement/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/players' element={<Player/>}/>
+          <Route path='/club' element={<Club/>}/>
           <Route path='/adminplayer/:playerId' element={<AdminPlayer/>}/>
           <Route path='/allrounder/:playerId' element={<AllRounder/>}/>
           <Route path='/batsman/:playerId' element={<Batsman/>}/>

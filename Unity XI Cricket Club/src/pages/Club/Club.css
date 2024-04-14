@@ -1,0 +1,15 @@
+.images {
+  height: 400px;
+  animation: anime;
+  transition: transition 1s;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("https://rdquiblqymwujjgwhwwr.supabase.co/storage/v1/object/sign/Club/Jersey.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJDbHViL0plcnNleS5wbmciLCJpYXQiOjE3MTMxMDMyMDEsImV4cCI6NDg2NjcwMzIwMX0.nPBXztPwIRNrsHmTm1WA0dagC-cMr6LMyJjqoBhWwE0&t=2024-04-14T14%3A00%3A01.940Z");
+}
+
+* {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

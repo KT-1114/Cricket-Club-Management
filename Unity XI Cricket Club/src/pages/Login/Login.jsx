@@ -21,7 +21,7 @@ const Login = () => {
         .single();
 
       if (error) {
-        throw error;
+        throw alert("No such player found...!");
       }
 
       if (!data) {

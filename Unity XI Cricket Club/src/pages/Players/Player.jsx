@@ -12,7 +12,8 @@ const Player = () => {
       try {
         const { data, error } = await supabase
           .from("players")
-          .select("player_name, photo, speciality, jersey_num, player_id")
+          .select("player_name, photo, speciality, jersey_num, player_id, club_id")
+          .eq("club_id", 1)
           .order("speciality", { ascending: false });
 
         console.log(data);
@@ -52,7 +53,7 @@ const Player = () => {
                   {cards
                     .filter((card) => card.speciality === "all_rounder")
                     .map((card, index) => (
-                      <div className="col mb-4" key={index}>
+                      <div className=" col mb-4" key={index}>
                         <a href={"/allrounder/" + card.player_id}>
                         <div className="player card h-100">
                           <img

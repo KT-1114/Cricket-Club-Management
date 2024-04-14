@@ -11,7 +11,7 @@ const CardList = () => {
       try {
         const { data, error } = await supabase
           .from("achievements")
-          .select("image_url, description, title, year").order("year", {ascending: false}).limit(3) ;
+          .select("image_url, description, title, year, id").order("year", {ascending: false}).limit(3) ;
 
         console.log(data)
         if (error) {
@@ -31,6 +31,7 @@ const CardList = () => {
     <div className="card-list row row-cols-1 row-cols-md-3 g-4">
     {cards.map((card, index) => (
       <div className="col" key={index}>
+        <a href={"/achievement/" + card.id}>
         <div className="card h-100">
           <img
             src={card.image_url}
@@ -43,6 +44,7 @@ const CardList = () => {
             {/* <p className="card-text">{card.description}</p> */}
           </div>
         </div>
+        </a>
       </div>
     ))}
   </div>

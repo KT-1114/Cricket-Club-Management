@@ -1,0 +1,19 @@
+.navbar {
+  font-family: "Maven Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.logoImage {
+  border-radius: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.logoImage p {
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}

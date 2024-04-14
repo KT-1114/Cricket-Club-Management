@@ -12,6 +12,8 @@
   "dependencies": {
     "@coreui/coreui": "^4.3.2",
     "@supabase/supabase-js": "^2.39.8",
+    "billboard.js": "^3.11.3",
+    "chart.js": "^3.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3"
@@ -24,6 +26,8 @@
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "faker": "^5.5.3",
+    "Faker": "^0.7.2",
     "vite": "^5.1.6"
   }
 }
