@@ -8,7 +8,7 @@ const Homepage = () => {
   return (
     <div className="">
       <Header curr={"Home"} />
-      <section className="pt-5">
+      <section className="pt-5 mt-5">
         <div class="container-fluid main px-4 px-lg-5 animate__animated animate__fadeInLeft">
           <div class="row gx-4 gx-lg-5 d-flex align-items-center">
             <div className="col-lg-5 images d-lg-block d-none"></div>

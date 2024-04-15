@@ -10,6 +10,7 @@ import Batsman from './pages/Details/Batsman'
 import Bowler from './pages/Details/Bowler'
 import Trophies from './pages/Details/Trophies'
 import Club from './pages/Club/Club'
+import Details from './pages/AdminPlayer/Details'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/players' element={<Player/>}/>
           <Route path='/club' element={<Club/>}/>
           <Route path='/adminplayer/:playerId' element={<AdminPlayer/>}/>
+          <Route path='/details/:playerId' element={<Details/>}/>
           <Route path='/allrounder/:playerId' element={<AllRounder/>}/>
           <Route path='/batsman/:playerId' element={<Batsman/>}/>
           <Route path='/bowler/:playerId' element={<Bowler/>}/>

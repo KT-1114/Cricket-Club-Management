@@ -44,21 +44,9 @@ const PlayerNav = (props) => {
               <li class="nav-item">
                 <a
                   class={
-                    props.curr === "Achievements"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  href="/achievements"
-                >
-                  Statistics
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class={
                     props.curr === "Players" ? "nav-link active" : "nav-link"
                   }
-                  href="/players"
+                  href={"/details/" + props.id}
                 >
                   Details
                 </a>
