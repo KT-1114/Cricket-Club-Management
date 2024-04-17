@@ -147,9 +147,9 @@ const Header = (props) => {
   const [loading, setLoading] = useState(false);
 
   const handleSearch = async (query) => {
-    setSearchQuery(query); 
+    setSearchQuery(query);
     if (!query) {
-      setSearchResults([]); 
+      setSearchResults([]);
       return;
     }
     try {
@@ -170,41 +170,174 @@ const Header = (props) => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top d-lg-none d-block">
+        {" "}
+        <div class="container">
+          <div className="logoImage">
+            <a
+              href="/"
+              className="navbar-brand animate__animated animate__fadeIn"
+            >
+              <img src={logo} className="logo" />
+            </a>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="bi bi-list"></i>
+          </button>
+          <div
+            class="collapse navbar-collapse animate__animated animate__fadeInRight"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  className={
+                    props.curr === "Home" ? "nav-link active" : "nav-link"
+                  }
+                  aria-current="page"
+                  href="/"
+                >
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class={
+                    props.curr === "Achievements"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  href="/achievements"
+                >
+                  Achievements
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class={
+                    props.curr === "Matches" ? "nav-link active" : "nav-link"
+                  }
+                  href="/matches"
+                >
+                  Matches
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class={
+                    props.curr === "Players" ? "nav-link active" : "nav-link"
+                  }
+                  href="/players"
+                >
+                  Players
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class={props.curr === "Club" ? "nav-link active" : "nav-link"}
+                  href="/club"
+                >
+                  Club
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class={
+                    props.curr === "Login" ? "nav-link active" : "nav-link"
+                  }
+                  href="/login"
+                  aria-disabled="true"
+                >
+                  Login
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top d-lg-block d-none">
         <div className="container">
           <div className="navbar-header">
-            <a href="/" className="navbar-brand animate__animated animate__fadeIn"><img src={logo} className="logo"/></a>
+            <a
+              href="/"
+              className="navbar-brand animate__animated animate__fadeIn"
+            >
+              <img src={logo} className="logo" />
+            </a>
           </div>
           <div className="navbar-center">
             {/* Centered navigation links */}
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
-                <a className={props.curr === "Home" ? "nav-link active" : "nav-link"}  aria-current="page" href="/">
+                <a
+                  className={
+                    props.curr === "Home" ? "nav-link active" : "nav-link"
+                  }
+                  aria-current="page"
+                  href="/"
+                >
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className={props.curr === "Achievements" ? "nav-link active" : "nav-link"} href="/achievements">
+                <a
+                  className={
+                    props.curr === "Achievements"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  href="/achievements"
+                >
                   Achievements
                 </a>
               </li>
               <li className="nav-item">
-                <a className={props.curr === "Matches" ? "nav-link active" : "nav-link"} href="/matches">
+                <a
+                  className={
+                    props.curr === "Matches" ? "nav-link active" : "nav-link"
+                  }
+                  href="/matches"
+                >
                   Matches
                 </a>
               </li>
               <li className="nav-item">
-                <a className={props.curr === "Players" ? "nav-link active" : "nav-link"} href="/players">
+                <a
+                  className={
+                    props.curr === "Players" ? "nav-link active" : "nav-link"
+                  }
+                  href="/players"
+                >
                   Players
                 </a>
               </li>
               <li className="nav-item">
-                <a className={props.curr === "Club" ? "nav-link active" : "nav-link"} href="/club">
+                <a
+                  className={
+                    props.curr === "Club" ? "nav-link active" : "nav-link"
+                  }
+                  href="/club"
+                >
                   Club
                 </a>
               </li>
               <li className="nav-item">
-                <a className={props.curr === "Login" ? "nav-link active" : "nav-link"} href="/login" aria-disabled="true">
+                <a
+                  className={
+                    props.curr === "Login" ? "nav-link active" : "nav-link"
+                  }
+                  href="/login"
+                  aria-disabled="true"
+                >
                   Login
                 </a>
               </li>
@@ -222,7 +355,10 @@ const Header = (props) => {
                 value={searchQuery}
                 onChange={(e) => handleSearch(e.target.value)}
               />
-              <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <ul
+                className="dropdown-menu"
+                aria-labelledby="dropdownMenuButton"
+              >
                 {loading ? (
                   <li>
                     <span className="dropdown-item">Loading...</span>
@@ -230,7 +366,16 @@ const Header = (props) => {
                 ) : searchResults.length > 0 ? (
                   searchResults.map((player) => (
                     <li key={player.player_id}>
-                      <a className="dropdown-item" href={player.speciality === "batsman"? ("/batsman/" + player.player_id) : player.speciality === "bowler"? ("/bowler/" + player.player_id) : ("allrounder/" + player.player_id)}>
+                      <a
+                        className="dropdown-item"
+                        href={
+                          player.speciality === "batsman"
+                            ? "/batsman/" + player.player_id
+                            : player.speciality === "bowler"
+                            ? "/bowler/" + player.player_id
+                            : "allrounder/" + player.player_id
+                        }
+                      >
                         {player.player_name}
                       </a>
                     </li>
