@@ -66,6 +66,16 @@ const CoachNav = (props) => {
               <li class="nav-item">
                 <a
                   class={
+                    props.curr === "PlayerForm" ? "nav-link active" : "nav-link"
+                  }
+                  href={"/playerform/" + props.id}
+                >
+                  Add Player
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class={
                     props.curr === "Login" ? "nav-link active" : "nav-link"
                   }
                   href="/login"

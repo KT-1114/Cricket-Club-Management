@@ -16,6 +16,7 @@ import AdminCoach from "./pages/AdminCoach/AdminCoach";
 import AllPlayers from "./pages/AdminCoach/AllPlayers";
 import MatchesTable from "./pages/Matches/Matches";
 import AllMatches from "./pages/AdminCoach/AllMatches";
+import PlayerForm from "./pages/AdminCoach/PlayerForm";
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
           <Route path="/achievement/:Id" element={<Trophies />} />
           <Route path="/allplayers/:coachId" element={<AllPlayers />} />
           <Route path="/allmatches/:coachId" element={<AllMatches />} />
+          <Route path="/playerform/:coachId" element={<PlayerForm />} />
         </Routes>
       </BrowserRouter>
     </div>
