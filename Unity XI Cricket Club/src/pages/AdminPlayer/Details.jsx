@@ -9,6 +9,7 @@ const Details = () => {
   const [playerStats, setPlayerStats] = useState(null);
   const [loggedIn, setLoggedIn] = useState(true);
   const navigate = useNavigate();
+  const [editedPlayerData, setEditedPlayerData] = useState(null);
 
   useEffect(() => {
     const fetchPlayerData = async () => {
@@ -60,6 +61,52 @@ const Details = () => {
     fetchPlayerData();
   }, [playerId]);
 
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    if (name === "contact") {
+      if (value.length <= 10 || value.length === 0) {
+        setEditedPlayerData({
+          ...editedPlayerData,
+          [name]: value,
+        });
+      } else {
+        event.target.value = "";
+        setEditedPlayerData({
+          ...editedPlayerData,
+          [name]: "",
+        });
+        alert(
+          "Please provide a correct 10-digit mobile number or leave it empty."
+        );
+      }
+    } else {
+      setEditedPlayerData({
+        ...editedPlayerData,
+        [name]: value,
+      });
+    }
+  }
+
+  const saveProfile = async () => {
+    try {
+      const { error } = await supabase
+        .from("players")
+        .update(editedPlayerData)
+        .eq("player_id", playerId);
+
+      console.log(editedPlayerData);
+      if (error) {
+        throw error;
+      }
+
+      setPlayerData({ ...editedPlayerData });
+      alert("Successfully upadated profile.");
+      navigate("/adminplayer/" + playerId);
+    } catch (error) {
+      console.error("Error updating player data:", error.message);
+    }
+  };
+
   const handleLogout = () => {
     setLoggedIn(false);
     navigate("/login");
@@ -74,7 +121,7 @@ const Details = () => {
     <div>
       {playerData && playerStats ? (
         <div className="">
-          <PlayerNav curr={"details"} />
+          <PlayerNav curr={"details"} id={playerId} />
           <div className="mt-5 pt-5">
             <div class="container rounded bg-white mt-5 mb-5">
               <div class="row">
@@ -85,8 +132,10 @@ const Details = () => {
                       width="150px"
                       src={playerData.photo}
                     />
-                    <span class="font-weight-bold">{playerData.player_name}</span>
-                    <span class="text-black-50">edogaru@mail.com.my</span>
+                    <span class="font-weight-bold">
+                      {playerData.player_name}
+                    </span>
+                    <span class="text-black-50">{playerData.email}</span>
                     <span> </span>
                   </div>
                 </div>
@@ -95,51 +144,56 @@ const Details = () => {
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h4 class="text-right">Profile Settings</h4>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12 py-1">
                       <label class="labels">Name</label>
                       <input
                         type="text"
                         class="form-control"
-                        placeholder="name"
-                        value={playerData.player_name}
+                        placeholder={playerData.player_name}
+                        name="player_name"
+                        onChange={handleInputChange}
                       />
                     </div>
 
                     <div class="row mt-3">
-                      <div class="col-md-12">
+                      <div class="col-md-12 py-1">
                         <label class="labels">Mobile Number</label>
                         <input
                           type="text"
                           class="form-control"
-                          placeholder="enter phone number"
-                          value=""
+                          name="contact"
+                          placeholder={playerData.contact}
+                          onChange={handleInputChange}
                         />
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-12 py-1">
                         <label class="labels">Email ID</label>
                         <input
                           type="text"
                           class="form-control"
-                          placeholder="enter email id"
-                          value=""
+                          placeholder={playerData.email}
+                          onChange={handleInputChange}
+                          name="email"
                         />
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-12 py-1">
                         <label class="labels">Age</label>
                         <input
                           type="text"
                           class="form-control"
-                          placeholder="Age"
-                          value={playerData.age}
+                          placeholder={playerData.age}
+                          name="age"
+                          onChange={handleInputChange}
                         />
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-12 py-1">
                         <label class="labels">Joining Date</label>
                         <input
                           type="text"
                           class="form-control"
-                          placeholder="Date"
-                          value={playerData.joining_date}
+                          placeholder={playerData.joining_date}
+                          name="joining_date"
+                          onChange={handleInputChange}
                         />
                       </div>
                     </div>
@@ -158,13 +212,18 @@ const Details = () => {
                         <input
                           type="text"
                           class="form-control"
-                          value={playerData.city}
-                          placeholder="state"
+                          name="city"
+                          onChange={handleInputChange}
+                          placeholder={playerData.city}
                         />
                       </div>
                     </div>
                     <div class="mt-5 text-center">
-                      <button class="btn profile-button" type="button">
+                      <button
+                        class="btn btn-outline-primary profile-button"
+                        type="button"
+                        onClick={saveProfile}
+                      >
                         Save Profile
                       </button>
                     </div>
@@ -173,29 +232,30 @@ const Details = () => {
                 <div class="col-md-4">
                   <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience">
-                      <span>Edit Experience</span>
-                      <span class="border px-3 p-1 add-experience">
-                        <i class="fa fa-plus"></i>&nbsp;Experience
-                      </span>
+                      <span>Club Details</span>
                     </div>
                     <br />
                     <div class="col-md-12">
-                      <label class="labels">Experience in Designing</label>
+                      <label class="labels">Jersey Number</label>
                       <input
                         type="text"
                         class="form-control"
                         placeholder="experience"
-                        value=""
+                        value={playerData.jersey_num}
                       />
                     </div>{" "}
                     <br />
                     <div class="col-md-12">
-                      <label class="labels">Additional Details</label>
+                      <label class="labels">Total matches</label>
                       <input
                         type="text"
                         class="form-control"
                         placeholder="additional details"
-                        value=""
+                        value={
+                          playerData.odi_played +
+                          playerData.test_played +
+                          playerData.t20_played
+                        }
                       />
                     </div>
                   </div>

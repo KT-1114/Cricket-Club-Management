@@ -21,18 +21,18 @@ const Bowler = () => {
           throw playerError;
         }
 
-        const { data: all_rounderData, error: all_rounderError } =
+        const { data: bowlerData, error: bowlerError } =
           await supabase
             .from("bowlers")
             .select("*")
             .eq("player_id", playerId)
             .single();
 
-        if (all_rounderError) {
-          throw all_rounderError;
+        if (bowlerError) {
+          throw bowlerError;
         }
 
-        const combinedPlayerData = { ...playerData, ...all_rounderData };
+        const combinedPlayerData = { ...playerData, ...bowlerData };
 
         setPlayerData(combinedPlayerData);
       } catch (error) {

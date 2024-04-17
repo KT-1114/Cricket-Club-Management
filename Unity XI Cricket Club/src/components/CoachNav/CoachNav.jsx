@@ -2,8 +2,8 @@ import React from "react";
 import logo from "../../assets/logo.png";
 import "../PlayerNav/PlayerNav.css";
 
-const PlayerNav = (props) => {
-  console.log(props)
+const CoachNav = (props) => {
+  console.log(props);
   return (
     <div>
       <nav
@@ -11,8 +11,10 @@ const PlayerNav = (props) => {
         style={{ marginBottom: "1%" }}
       >
         <div class="container">
-        <div className="logoImage">
-          <a className="navbar-brand animate__animated animate__fadeIn"><img src={logo} className="logo"/></a>
+          <div className="logoImage">
+            <a className="navbar-brand animate__animated animate__fadeIn">
+              <img src={logo} className="logo" />
+            </a>
           </div>
           <button
             class="navbar-toggler"
@@ -36,7 +38,7 @@ const PlayerNav = (props) => {
                     props.curr === "Dash" ? "nav-link active" : "nav-link"
                   }
                   aria-current="page"
-                  href={"/adminplayer/" + props.id}
+                  href={"/admincoach/" + props.id}
                 >
                   Dashboard
                 </a>
@@ -44,11 +46,21 @@ const PlayerNav = (props) => {
               <li class="nav-item">
                 <a
                   class={
-                    props.curr === "details" ? "nav-link active" : "nav-link"
+                    props.curr === "Players" ? "nav-link active" : "nav-link"
                   }
-                  href={"/details/" + props.id}
+                  href={"/allplayers/" + props.id}
                 >
-                  Details
+                  Players
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class={
+                    props.curr === "Matches" ? "nav-link active" : "nav-link"
+                  }
+                  href={"/allmatches/" + props.id}
+                >
+                  Matches
                 </a>
               </li>
               <li class="nav-item">
@@ -70,4 +82,4 @@ const PlayerNav = (props) => {
   );
 };
 
-export default PlayerNav;
+export default CoachNav;

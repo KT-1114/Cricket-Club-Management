@@ -12,11 +12,7 @@ const Trophies = () => {
     const fetchPlayerData = async () => {
       try {
         const { data: all_rounderData, error: all_rounderError } =
-          await supabase
-            .from("achievements")
-            .select("*")
-            .eq("id", Id)
-            .single();
+          await supabase.from("achievements").select("*").eq("id", Id).single();
 
         if (all_rounderError) {
           throw all_rounderError;
@@ -48,7 +44,7 @@ const Trophies = () => {
                   <div class="small mb-1">{playerData.year}</div>
                   <h1 class="display-5 fw-bolder">{playerData.title}</h1>
                   <div class="fs-5 mb-5">
-                   <p>{playerData.description}</p>
+                    <p>{playerData.description}</p>
                   </div>
                 </div>
               </div>

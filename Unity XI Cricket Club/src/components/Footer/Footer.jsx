@@ -56,7 +56,7 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="#!" class="">
+                    <a href="/coachlogin" class="">
                       Coach
                     </a>
                   </li>

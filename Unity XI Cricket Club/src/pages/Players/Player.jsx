@@ -12,7 +12,9 @@ const Player = () => {
       try {
         const { data, error } = await supabase
           .from("players")
-          .select("player_name, photo, speciality, jersey_num, player_id, club_id")
+          .select(
+            "player_name, photo, speciality, jersey_num, player_id, club_id"
+          )
           .eq("club_id", 1)
           .order("speciality", { ascending: false });
 
@@ -33,7 +35,7 @@ const Player = () => {
 
   return (
     <div className="">
-      {loading ? ( // Conditionally render loading animation
+      {loading ? (
         <div className="text-center loading-container mt-5">
           <p>Loading...</p>
         </div>
@@ -55,18 +57,20 @@ const Player = () => {
                     .map((card, index) => (
                       <div className=" col mb-4" key={index}>
                         <a href={"/allrounder/" + card.player_id}>
-                        <div className="player card h-100">
-                          <img
-                            className="card-img-top"
-                            src={card.photo}
-                            alt="..."
-                          />
-                          <div className="card-body p-4">
-                            <div className="text-center">
-                              <h5 className="fw-bolder">{card.player_name}</h5>
+                          <div className="player card h-100">
+                            <img
+                              className="card-img-top"
+                              src={card.photo}
+                              alt="..."
+                            />
+                            <div className="card-body p-4">
+                              <div className="text-center">
+                                <h5 className="fw-bolder">
+                                  {card.player_name}
+                                </h5>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         </a>
                       </div>
                     ))}
@@ -81,18 +85,20 @@ const Player = () => {
                     .map((card, index) => (
                       <div className="col mb-4" key={index}>
                         <a href={"/batsman/" + card.player_id}>
-                        <div className="player card h-100">
-                          <img
-                            className="card-img-top"
-                            src={card.photo}
-                            alt="..."
-                          />
-                          <div className="card-body p-4">
-                            <div className="text-center">
-                              <h5 className="fw-bolder">{card.player_name}</h5>
+                          <div className="player card h-100">
+                            <img
+                              className="card-img-top"
+                              src={card.photo}
+                              alt="..."
+                            />
+                            <div className="card-body p-4">
+                              <div className="text-center">
+                                <h5 className="fw-bolder">
+                                  {card.player_name}
+                                </h5>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         </a>
                       </div>
                     ))}
@@ -107,18 +113,20 @@ const Player = () => {
                     .map((card, index) => (
                       <div className="col mb-4" key={index}>
                         <a href={"/bowler/" + card.player_id}>
-                        <div className="player card h-100">
-                          <img
-                            className="card-img-top"
-                            src={card.photo}
-                            alt="..."
-                          />
-                          <div className="card-body p-4">
-                            <div className="text-center">
-                              <h5 className="fw-bolder">{card.player_name}</h5>
+                          <div className="player card h-100">
+                            <img
+                              className="card-img-top"
+                              src={card.photo}
+                              alt="..."
+                            />
+                            <div className="card-body p-4">
+                              <div className="text-center">
+                                <h5 className="fw-bolder">
+                                  {card.player_name}
+                                </h5>
+                              </div>
                             </div>
                           </div>
-                        </div>
                         </a>
                       </div>
                     ))}
@@ -126,35 +134,6 @@ const Player = () => {
               </div>
             </section>
           </div>
-
-          {/* <div className="pt-5 mt-5">
-            <Header curr={"Achievements"} />
-            <section className="trophies">
-              <h1 className="text-center mt-4">Players</h1>
-            </section>
-            <section class="pb-5 pt-2 trophies">
-              <div class="container px-4 px-lg-5 pb-5 mt-5">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-center">
-                    {cards.map((card, index) => (
-                    <div class=" col mb-4" key={index}>
-                      <div class="player card h-100">
-                        <img
-                          class="card-img-top"
-                          src={card.photo}
-                          alt="..."
-                        />
-                        <div class="card-body p-4">
-                          <div class="text-center">
-                            <h5 class="fw-bolder">{card.player_name}</h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          </div> */}
           <Footer />
         </>
       )}

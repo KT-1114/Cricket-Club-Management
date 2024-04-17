@@ -33,7 +33,7 @@ const Achievement = () => {
 
   return (
     <div className="">
-      {loading ? ( // Conditionally render loading animation
+      {loading ? (
         <div className="text-center loading-container mt-5">
           <p>Loading...</p>
         </div>

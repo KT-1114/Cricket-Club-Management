@@ -33,11 +33,11 @@ const Header = (props) => {
                   Achievements
                 </a>
               </li>
-              {/* <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Statistics
+              <li class="nav-item">
+                <a class={props.curr === "Matches" ? "nav-link active" : "nav-link"} href="/matches">
+                  Matches
                 </a>
-              </li> */}
+              </li>
               <li class="nav-item">
                 <a class={props.curr === "Players" ? "nav-link active" : "nav-link"} href="/players">
                   Players

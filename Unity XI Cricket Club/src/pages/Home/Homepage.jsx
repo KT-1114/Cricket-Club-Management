@@ -51,7 +51,10 @@ const Homepage = () => {
         <div class="container-fluid achieve px-4 px-lg-5 animate__animated">
           <div class="row gx-4 gx-lg-5 d-flex align-items-center">
             <div className="victory col-lg-5">
-              <img src="https://img.freepik.com/free-vector/cricket-championship-with-ball-wicket-cricket-stadium-freehand-sketch-graphic-design-vector-illustration_460848-11672.jpg?t=st=1711189528~exp=1711193128~hmac=44f7a1693b2b9caf33e95a11dabbe03431e9070b3a1ac10ffb59ca5ced26e898&w=900" alt=""/>
+              <img
+                src="https://img.freepik.com/free-vector/cricket-championship-with-ball-wicket-cricket-stadium-freehand-sketch-graphic-design-vector-illustration_460848-11672.jpg?t=st=1711189528~exp=1711193128~hmac=44f7a1693b2b9caf33e95a11dabbe03431e9070b3a1ac10ffb59ca5ced26e898&w=900"
+                alt=""
+              />
             </div>
             <div class="col-lg-7">
               <div className="d-flex justify-content-between align-items-center">
@@ -72,7 +75,7 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

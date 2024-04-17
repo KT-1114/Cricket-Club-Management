@@ -8,6 +8,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url("https://wallpaperbat.com/img/68508-4k-ultra-hd-cricket-wallpaper-and-background-image.jpg");
+    /* background-image: url("https://wallpaperbat.com/img/275970-pc-cricket-amazing-wallpaper-bsnscb-gallery.jpg"); */
+    /* background-image: url("https://wallpaperaccess.com/full/1088580.jpg"); */
+    /* background-image: url("https://img.freepik.com/free-photo/view-cricket-game-field_23-2150995574.jpg?t=st=1713351218~exp=1713354818~hmac=1b623d71338daa5f95ab9e6109abb642f39d7e362a1d87b480b46376b10f1313&w=1060"); */
 }
 
 #bg-video {
