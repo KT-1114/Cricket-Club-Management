@@ -12,12 +12,36 @@ const AllMatches = (props) => {
   const [loading, setLoading] = useState(true);
   const [newMatches, setnewMatches] = useState([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isTeamDialogOpen, setTeamIsDialogOpen] = useState(false);
+  const [players, setPlayers] = useState([]);
+  const [selectedPlayers, setSelectedPlayers] = useState([]);
+  const [newTeam, setNewTeam] = useState({
+    team_name: "",
+    type: "",
+    players: [],
+  });
   const [newMatchDetails, setNewMatchDetails] = useState({
     venue: "",
     date: "",
     team2: "",
     team1: "Unity XI",
   });
+
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      try {
+        const { data, error } = await supabase.from("players").select("*");
+        if (error) {
+          throw error;
+        }
+        setPlayers(data);
+      } catch (error) {
+        console.error("Error fetching players:", error.message);
+      }
+    };
+
+    fetchPlayers();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,6 +124,36 @@ const AllMatches = (props) => {
     }
   };
 
+  const handleAddTeam = async () => {
+    try {
+      if(selectedPlayers.length >=15){
+        const { data, error } = await supabase.from("team").insert([newTeam]);
+        if (error) {
+          throw error;
+        }
+  
+        setTeamIsDialogOpen(false);
+        setNewTeam({
+          team_name: "",
+          type: "",
+          players: [],
+        });
+  
+        alert("Team created successfully.");
+      }else{
+        alert("Number of players must be at least 15.")
+        setTeamIsDialogOpen(false);
+        setNewTeam({
+          team_name: "",
+          type: "",
+          players: [],
+        });
+      }
+
+
+    } catch (error) {}
+  };
+
   const handleAddMatch = async () => {
     try {
       const now = new Date();
@@ -139,6 +193,10 @@ const AllMatches = (props) => {
     setIsDialogOpen(false);
   };
 
+  const handleTeamDialogClose = () => {
+    setTeamIsDialogOpen(false);
+  };
+
   return (
     <div className="">
       {!loading ? (
@@ -147,12 +205,21 @@ const AllMatches = (props) => {
             <CoachNav curr={"Matches"} id={coachId} />
             <div className="d-flex py-2 justify-content-between">
               <h1 className="text-white">Upcoming Matches</h1>
-              <button
-                className="btn btn-outline-warning text-dark bg-warning"
-                onClick={() => setIsDialogOpen(true)}
-              >
-                <i class="bi bi-plus-lg"></i> Add Match
-              </button>
+              <div className="">
+                <button
+                  className="btn btn-outline-warning text-dark bg-warning"
+                  onClick={() => setIsDialogOpen(true)}
+                >
+                  <i class="bi bi-plus-lg"></i> Add Match
+                </button>{" "}
+                &nbsp;
+                <button
+                  className="btn btn-outline-warning text-dark bg-warning"
+                  onClick={() => setTeamIsDialogOpen(true)}
+                >
+                  <i class="bi bi-plus-lg"></i> Create Team
+                </button>
+              </div>
             </div>
             <div className="table-responsive">
               <table className="table table-bordered">
@@ -325,6 +392,169 @@ const AllMatches = (props) => {
                   onClick={handleAddMatch}
                 >
                   Add
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isTeamDialogOpen && (
+        <div
+          className="modal fade show"
+          tabIndex="-1"
+          role="dialog"
+          style={{ display: "block" }}
+        >
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Create Team</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  onClick={handleTeamDialogClose}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label htmlFor="type" className="form-label">
+                    Format
+                  </label>
+                  <select
+                    className="form-select"
+                    id="type"
+                    value={newTeam.type}
+                    onChange={(e) =>
+                      setNewTeam({
+                        ...newTeam,
+                        type: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Select Venue</option>
+                    <option value="T20">T20</option>
+                    <option value="ODI">ODI</option>
+                    <option value="Test">Test</option>
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="team_name" className="form-label">
+                    Team Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="team_name"
+                    value={newTeam.team_name}
+                    onChange={(e) =>
+                      setNewTeam({
+                        ...newTeam,
+                        team_name: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="players" className="form-label">
+                    Players
+                  </label>
+                  {players.map((player) => (
+                    <div key={player.player_id} className="form-check">
+                      <div className="d-flex justify-content-between">
+                        {player.player_name}
+                        <div className="">
+                          <input
+                            type="radio"
+                            id={`add_${player.player_id}`}
+                            name={`player_${player.player_id}`}
+                            value="add"
+                            checked={selectedPlayers.includes(player.player_id)}
+                            onChange={(e) => {
+                              const action = e.target.value;
+                              console.log(selectedPlayers);
+                              if (action === "add") {
+                                setSelectedPlayers((prevSelectedPlayers) => [
+                                  ...prevSelectedPlayers,
+                                  player.player_id,
+                                ]);
+                                setNewTeam({
+                                  ...newTeam,
+                                  players: selectedPlayers,
+                                });
+                              } else {
+                                setSelectedPlayers((prevSelectedPlayers) =>
+                                  prevSelectedPlayers.filter(
+                                    (id) => id !== player.player_id
+                                  )
+                                );
+                                setNewTeam({
+                                  ...newTeam,
+                                  players: selectedPlayers,
+                                });
+                              }
+                            }}
+                          />
+                          <label htmlFor={`add_${player.player_id}`}>Add</label>
+                          &nbsp;
+                          <input
+                            type="radio"
+                            id={`remove_${player.player_id}`}
+                            name={`player_${player.player_id}`}
+                            value="remove"
+                            checked={
+                              !selectedPlayers.includes(player.player_id)
+                            }
+                            onChange={(e) => {
+                              const action = e.target.value;
+                              console.log(selectedPlayers);
+                              if (action === "remove") {
+                                setSelectedPlayers((prevSelectedPlayers) => [
+                                  ...prevSelectedPlayers.filter(
+                                    (id) => id !== player.player_id
+                                  ),
+                                ]);
+                                setNewTeam({
+                                  ...newTeam,
+                                  players: selectedPlayers,
+                                });
+                              } else {
+                                setSelectedPlayers((prevSelectedPlayers) => [
+                                  ...prevSelectedPlayers,
+                                  player.player_id,
+                                ]);
+                                setNewTeam({
+                                  ...newTeam,
+                                  players: selectedPlayers,
+                                });
+                              }
+                            }}
+                          />
+                          <label htmlFor={`remove_${player.player_id}`}>
+                            Remove
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  onClick={handleTeamDialogClose}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary"
+                  onClick={handleAddTeam}
+                >
+                  Create
                 </button>
               </div>
             </div>

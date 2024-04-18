@@ -45,8 +45,8 @@ const AllPlayers = (props) => {
         <div className="py-5">
           <CoachNav curr={"Players"} id={coachId} />
           <h1 className="my-4 mt-5 pt-5 text-white">Players</h1>
-          <div className="table-responsive">
-            <table className="table align-middle mb-0 bg-white">
+          <div className="table-responsive" style={{borderRadius: "10px"}}>
+            <table className="table align-middle mb-0 bg-white p-3">
               <thead className="bg-light">
                 <tr>
                   <th className="text-center">Name</th>

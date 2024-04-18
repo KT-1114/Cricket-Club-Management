@@ -17,6 +17,7 @@ import AllPlayers from "./pages/AdminCoach/AllPlayers";
 import MatchesTable from "./pages/Matches/Matches";
 import AllMatches from "./pages/AdminCoach/AllMatches";
 import PlayerForm from "./pages/AdminCoach/PlayerForm";
+import Teams from "./pages/AdminCoach/Teams";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/allplayers/:coachId" element={<AllPlayers />} />
           <Route path="/allmatches/:coachId" element={<AllMatches />} />
           <Route path="/playerform/:coachId" element={<PlayerForm />} />
+          <Route path="/teams/:coachId" element={<Teams />} />
         </Routes>
       </BrowserRouter>
     </div>
