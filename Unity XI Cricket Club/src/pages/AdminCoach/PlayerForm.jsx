@@ -2,11 +2,13 @@ import { useState } from "react";
 import CoachNav from "../../components/CoachNav/CoachNav";
 import logo from "../../assets/logo.png";
 import supabase from "../../connection";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 
 const PlayerForm = () => {
   const { coachId } = useParams();
+  const navigate = useNavigate();
+  const [imageUrl, setImageUrl] = useState("");
   const [formData, setFormData] = useState({
     player_name: "",
     age: "",
@@ -18,10 +20,10 @@ const PlayerForm = () => {
     password: "",
     batting_side: "",
     bowling_style: "",
-    password: "",
-    // photo: "",
+    photo: "",
   });
 
+  console.log(coachId);
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleChange = (e) => {
@@ -30,6 +32,12 @@ const PlayerForm = () => {
 
     setFormData({ ...formData, [name]: newValue });
   };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, photo: file });
+  };
+
   const validateForm = () => {
     const {
       player_name,
@@ -44,10 +52,10 @@ const PlayerForm = () => {
       password,
     } = formData;
 
-    // if (!formData.photo) {
-    //   alert("Please choose a photo.");
-    //   return;
-    // }
+    if (!formData.photo) {
+      alert("Please choose a photo.");
+      return;
+    }
 
     const nameRegex = /^[a-zA-Z\s]+$/;
     if (!player_name.trim()) {
@@ -157,37 +165,54 @@ const PlayerForm = () => {
     const playerId = maxPlayerIdData.player_id + 1;
 
     const currentDate = new Date();
-    // const uploadFile = async (file) => {
-    //   try {
-    //     const { data, error } = await supabase.storage
-    //       .from('Club')
-    //       .upload(`public/${file.name}`, file, {
-    //         cacheControl: '3600',
-    //       });
+    const uploadFile = async (file) => {
+      try {
+        console.log("In upload file");
+        const { data, error } = await supabase.storage
+          .from("Club")
+          .upload(file.name, file);
 
-    //     if (error) {
-    //       throw error;
-    //     }
 
-    //     // Return the URL of the uploaded file
-    //     return data.Key;
-    //   } catch (error) {
-    //     console.error('Error uploading file:', error.message);
-    //     return null;
-    //   }
-    // };
-    //     let photoUrl = "";
-    // try {
-    //   photoUrl = await uploadFile(formData.photo);
-    //   if (!photoUrl) {
-    //     alert("Couldn't upload the photo.")
-    //     return;
-    //   }
-    // }
-    // catch(error){
-    //   alert("Couldn't upload the photo.")
-    //   return;
-    // }
+        // const {data1} = await supabase.storage
+        // .from("Club")
+        // .createSignedUploadUrl(file.name);
+
+        // const {data2} = await supabase.storage
+        // .from("Club")
+        // .uploadToSignedUrl(file.name, data1, file);
+
+        const {data3} = await supabase.storage
+        .from("Club")
+        .getPublicUrl(file.name);
+
+        console.log(data3)
+
+        if (error) {
+          throw error;
+        }
+        console.log("Upload file 2");
+        const url =  URL.createObjectURL(file);
+        console.log(data);
+        setImageUrl(url);
+        console.log(file.name)
+        formData.photo = file.name;
+        return data.Key;
+      } catch (error) {
+        console.error("Error uploading file:", error.message);
+        return null;
+      }
+    };
+    let photoUrl = "";
+    try {
+      photoUrl = await uploadFile(formData.photo);
+      // if (!photoUrl) {
+      //   // alert("Couldn't upload the photo.")
+      //   return;
+      // }
+    } catch (error) {
+      alert("Couldn't upload the photo." + error.message);
+      return;
+    }
 
     const playerData = {
       player_id: playerId,
@@ -201,7 +226,7 @@ const PlayerForm = () => {
       contact: formData.contact,
       email: formData.email,
       speciality: formData.speciality.toLowerCase(),
-      photo: "",
+      photo: "https://rdquiblqymwujjgwhwwr.supabase.co/storage/v1/object/public/Club/" + formData.photo,
     };
 
     let batsmanData = {};
@@ -280,7 +305,8 @@ const PlayerForm = () => {
       }
 
       console.log("Data inserted successfully");
-      alert("Player addded successfully");
+      alert("Data inserted successfully")
+      navigate("/allplayers/"+coachId)
       setFormData({
         player_name: "",
         age: "",
@@ -292,7 +318,7 @@ const PlayerForm = () => {
         password: "",
         batting_side: "",
         bowling_style: "",
-        // photo: ""
+        photo: "",
       });
     } catch (error) {
       console.error("Error inserting data:", error.message);
@@ -428,18 +454,18 @@ const PlayerForm = () => {
                       alt="profile"
                     />
                   </div>
-                  {/* <div className="mb-3">
-                      <label htmlFor="photo" className="form-label">
-                        Photo
-                      </label>
-                      <input
-                        type="file"
-                        className="form-control"
-                        id="photo"
-                        onChange={handlePhotoChange}
-                        accept="image/*"
-                      />
-                    </div> */}
+                  <div className="mb-3">
+                    <label htmlFor="photo" className="form-label">
+                      Photo
+                    </label>
+                    <input
+                      type="file"
+                      className="form-control"
+                      id="photo"
+                      onChange={handlePhotoChange}
+                      accept="image/*"
+                    />
+                  </div>
                   <div class="mb-3">
                     <input
                       type="text"
