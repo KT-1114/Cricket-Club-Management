@@ -39,6 +39,7 @@ const Teams = () => {
       <CoachNav curr={"Teams"} id={coachId} />
       <div className="container-fluid mt-5 py-5">
         <div className="row">
+          
           {teams.map((team) => (
             <div className="col-md-6" key={team.team_id}>
               <TeamTable team={team} onDelete={() => deleteTeam(team.team_id)}/>

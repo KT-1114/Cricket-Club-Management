@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import supabase from "../../connection";
 import CoachNav from "../../components/CoachNav/CoachNav";
 import { useNavigate, useParams } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 const AllPlayers = (props) => {
   const { coachId } = useParams();
@@ -15,7 +16,7 @@ const AllPlayers = (props) => {
         .from("players")
         .select("*")
         // .order("club_id", { ascending: true });
-      .eq("club_id", 1);
+        .eq("club_id", 1);
       if (error) {
         console.error("Error fetching players:", error.message);
       } else {
@@ -27,9 +28,14 @@ const AllPlayers = (props) => {
   }, []);
 
   const handleDelete = async (playerId) => {
-    const confirmDelete = window.confirm("Are you sure you want to delete this player?");
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this player?"
+    );
     if (confirmDelete) {
-      const { error } = await supabase.from("players").delete().eq("player_id", playerId);
+      const { error } = await supabase
+        .from("players")
+        .delete()
+        .eq("player_id", playerId);
       if (error) {
         console.error("Error deleting player:", error.message);
       } else {
@@ -37,74 +43,80 @@ const AllPlayers = (props) => {
         setPlayerToDelete(null);
       }
     }
-};
+  };
 
   return (
-    <div className="container-fluid">
+    <div className="">
       {players ? (
-        <div className="py-5">
-          <CoachNav curr={"Players"} id={coachId} />
-          <h1 className="my-4 mt-5 pt-5 text-white">Players</h1>
-          <div className="table-responsive" style={{borderRadius: "10px"}}>
-            <table className="table align-middle mb-0 bg-white p-3">
-              <thead className="bg-light">
-                <tr>
-                  <th className="text-center">Name</th>
-                  <th className="text-center">City/Age</th>
-                  <th className="text-center">Contact</th>
-                  <th className="text-center">Speciality</th>
-                  <th className="text-center">Jersey Number</th>
-                  <th className="text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {players.map((player) => (
-                  <tr key={player.player_id}>
-                    <td>
-                      <div className="d-flex align-items-center">
-                        <img
-                          src={player.photo}
-                          alt=""
-                          style={{ height: "45px", width: "45px" }}
-                          className="rounded-circle"
-                        />
-                        <div className="ms-3">
-                          <p className="fw-bold mb-1">{player.player_name}</p>
-                          <p className="text-muted text-center mb-0">
-                            {player.email}
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p className="fw-normal text-center mb-1">
-                        {player.city}
-                      </p>
-                      <p className="text-muted text-center mb-0">
-                        Age: {player.age}
-                      </p>
-                    </td>
-                    <td>{player.contact}</td>
-                    <td className="text-center">{player.speciality}</td>
-                    <td>
-                      <p className="fw-normal text-center mb-1">
-                        {player.jersey_num}
-                      </p>
-                    </td>
-                    <td>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-rounded"
-                        onClick={() => setPlayerToDelete(player.player_id)}
-                      >
-                        <i class="bi bi-trash3-fill text-danger"></i>
-                      </button>
-                    </td>
+        <div className="">
+        <div>
+          <div className="py-5 mx-4">
+            <CoachNav curr={"Players"} id={coachId} />
+            <h1 className="my-4 mt-5 pt-5 text-white">Players</h1>
+            <div className="table-responsive" style={{ borderRadius: "10px" }}>
+              <table className="table align-middle mb-0 bg-white p-3">
+                <thead className="bg-light">
+                  <tr>
+                    <th className="text-center">Name</th>
+                    <th className="text-center">City/Age</th>
+                    <th className="text-center">Contact</th>
+                    <th className="text-center">Speciality</th>
+                    <th className="text-center">Jersey Number</th>
+                    <th className="text-center">Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {players.map((player) => (
+                    <tr key={player.player_id}>
+                      <td>
+                        <div className="d-flex align-items-center">
+                          <img
+                            src={player.photo}
+                            alt=""
+                            style={{ height: "45px", width: "45px" }}
+                            className="rounded-circle"
+                          />
+                          <div className="ms-3">
+                            <p className="fw-bold mb-1">{player.player_name}</p>
+                            <p className="text-muted text-center mb-0">
+                              {player.email}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p className="fw-normal text-center mb-1">
+                          {player.city}
+                        </p>
+                        <p className="text-muted text-center mb-0">
+                          Age: {player.age}
+                        </p>
+                      </td>
+                      <td>{player.contact}</td>
+                      <td className="text-center">{player.speciality}</td>
+                      <td>
+                        <p className="fw-normal text-center mb-1">
+                          {player.jersey_num}
+                        </p>
+                      </td>
+                      <td>
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-rounded"
+                          onClick={() => setPlayerToDelete(player.player_id)}
+                        >
+                          <i class="bi bi-trash3-fill text-danger"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
+        </div>
+      <Footer />
+
         </div>
       ) : (
         ""
@@ -151,7 +163,7 @@ const AllPlayers = (props) => {
           </div>
         </div>
       )}
-    </div>
+          </div>
   );
 };
 
